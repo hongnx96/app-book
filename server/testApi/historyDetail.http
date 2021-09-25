@@ -1,0 +1,17 @@
+POST http://localhost:5000/history-details/search
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJOZ3V5ZW4gSG9uZyIsInN1YiI6MSwiaWF0IjoxNjMwOTg3NjU2LCJleHQiOjE2MzEyNDY4NTYyNTR9.lwXrEGhxHPmMoQ0Dao48PXpL5z0jlG8WDMYTQC3Fx_U
+Content-Type: application/json
+
+{
+    "history_id": "abc",
+    "book_id": "",
+    "status": ""
+}
+
+###
+GET http://localhost:5000/history-details/api/33
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJOZ3V5ZW4gSG9uZyIsInN1YiI6MSwiaWF0IjoxNjMwOTg3NjU2LCJleHQiOjE2MzEyNDY4NTYyNTR9.lwXrEGhxHPmMoQ0Dao48PXpL5z0jlG8WDMYTQC3Fx_U
+
+
+###
+DELETE http://localhost:5000/history-details/api/1

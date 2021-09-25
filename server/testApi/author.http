@@ -1,0 +1,32 @@
+###
+POST http://localhost:5000/authors
+Content-Type: application/json
+
+{
+    "author_name": "Nguyễn Nhật Ánh",
+    "author_day_of_birth": "1955-05-07",
+    "is_deleted": 0
+}
+
+###
+POST http://localhost:5000/authors/search
+Content-Type: application/json
+
+{
+    "author_name": ""
+}
+
+###
+GET http://localhost:5000/authors/2
+
+###
+PUT http://localhost:5000/authors/1
+Content-Type: application/json
+
+{
+    "author_name": "Tô Hoài",
+    "author_day_of_birth": "1920-09-27"
+}
+
+###
+DELETE http://localhost:5000/authors/2

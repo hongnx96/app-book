@@ -1,0 +1,30 @@
+###
+POST http://localhost:5000/roles
+Content-Type: application/json
+
+{
+    "role_name": "user",
+    "is_deleted": 0
+}
+
+###
+POST http://localhost:5000/roles/search
+Content-Type: application/json
+
+{
+    "role_name": "E"
+}
+
+###
+GET http://localhost:5000/roles/3
+
+###
+PUT http://localhost:5000/roles/3
+Content-Type: application/json
+
+{
+    "role_name": "users"
+}
+
+###
+DELETE http://localhost:5000/roles/3

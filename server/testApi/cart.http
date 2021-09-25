@@ -1,0 +1,2 @@
+GET http://localhost:5000/carts/customer
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJOZ3V5ZW4gSG9uZyIsInN1YiI6MSwiaWF0IjoxNjMwNTUwMjQ3LCJleHQiOjE2MzA4MDk0NDc1MjB9.waa5I5pOYfDcbWwLm3dMdyGITedbWkTg2mg2SeFcUjg

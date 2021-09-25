@@ -1,0 +1,54 @@
+###
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "user_name": "employee",
+    "user_password": "123456",
+    "role_id": 2,
+    "user_age": 23,
+    "user_email": "employee@gmail.com",
+    "is_deleted": 0
+}
+
+###
+POST http://localhost:5000/users/sign-in
+Content-Type: application/json
+
+{
+    "user_email": "admin@gmail.com",
+    "user_password": "123456"
+}
+
+### 
+POST http://localhost:5000/users/search
+Content-Type: application/json
+
+{
+    "user_name": "",
+    "role_id": "",
+    "user_email": ""
+}
+
+###
+GET http://localhost:5000/users/api/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJOZ3V5ZW4gSG9uZyIsInN1YiI6MSwiaWF0IjoxNjI5NzAzNTU1LCJleHQiOjE2Mjk5NjI3NTUzODB9.RagQ8QFGGdNQSeJskMB68euVwTzm-70H8kigRTW5uYE
+
+###
+PUT http://localhost:5000/users/api/3
+Content-Type: application/json
+
+{
+    "user_name": "anh",
+    "user_password": "123456",
+    "role_id": 2,
+    "user_age": 28,
+    "user_email": "anh@gmail.com"
+}
+
+###
+DELETE http://localhost:5000/users/api/2
+
+###
+GET http://localhost:5000/users/role
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJOZ3V5ZW4gSG9uZyIsInN1YiI6MSwiaWF0IjoxNjI5NzAzNTU1LCJleHQiOjE2Mjk5NjI3NTUzODB9.RagQ8QFGGdNQSeJskMB68euVwTzm-70H8kigRTW5uYE

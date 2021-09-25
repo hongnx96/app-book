@@ -1,0 +1,35 @@
+###
+POST http://localhost:5000/histories
+Content-Type: application/json
+
+{
+    "customer_id": 2,
+    "is_deleted": 0
+}
+
+###
+POST http://localhost:5000/histories/search
+Content-Type: application/json
+
+{
+    "customer_name": "",
+    "customer_email": "",
+    "customer_number_phone": ""
+}
+
+###
+GET http://localhost:5000/histories/api/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJOZ3V5ZW4gSG9uZyIsInN1YiI6MSwiaWF0IjoxNjMwNDYxODg4LCJleHQiOjE2MzA3MjEwODg4NDB9.Hj8_WjznUTe1lcO-rYcl-x2jUJ2koR6qIowoXkpo5GA
+###
+PUT http://localhost:5000/histories/api/1
+Content-Type: application/json
+
+{
+    "customer_id": 2
+}
+
+###
+DELETE http://localhost:5000/histories/api/2
+
+###
+GET http://localhost:5000/histories/customer

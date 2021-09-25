@@ -1,0 +1,47 @@
+###
+POST http://localhost:5000/books
+Content-Type: application/json
+
+{
+    "book_name": "Kính Vạn Hoa",
+    "author_id": 2,
+    "book_type_id": 1,
+    "book_publishing_house": "Nhà xuất bản Kim Đồng",
+    "book_publishing_date": "1995-08-12",
+    "is_deleted": 0 
+}
+
+###
+POST http://localhost:5000/books/search
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJOZ3V5ZW4gSG9uZyIsInN1YiI6MSwiaWF0IjoxNjMwMDM1MzQxLCJleHQiOjE2MzAyOTQ1NDE3Njd9.85FJKK5-K9ynVChkAZS-VSOHaAj-p6EGR-UJD49a6XA
+Content-Type: application/json
+
+{
+    "book_name": "",
+    "author_id": "abc",
+    "book_type_id": ""
+}
+
+###
+GET http://localhost:5000/books/api/2
+
+###
+PUT http://localhost:5000/books/api/2
+Content-Type: application/json
+
+{
+    "book_name": "Kính Vạn Hoa",
+    "author_id": 2,
+    "book_type_id": 1,
+    "book_publishing_house": "Nhà xuất bản Kim Đồng",
+    "book_publishing_date": "1995-08-12"
+}
+
+###
+DELETE http://localhost:5000/books/api/2
+
+###
+GET http://localhost:5000/books/author
+
+###
+GET http://localhost:5000/books/book-type

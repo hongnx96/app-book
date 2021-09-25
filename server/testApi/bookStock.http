@@ -1,0 +1,39 @@
+###
+POST http://localhost:5000/book-stocks
+Content-Type: application/json
+
+{
+    "book_id": 2,
+    "instock": 1,
+    "rending": 0,
+    "quantity": 1,
+    "is_deleted": 0
+}
+
+###
+POST http://localhost:5000/book-stocks/search
+Content-Type: application/json
+
+{
+    "book_id": ""
+}
+
+###
+GET http://localhost:5000/book-stocks/api/1
+
+###
+PUT http://localhost:5000/book-stocks/api/2
+Content-Type: application/json
+
+{
+    "book_id": 2,
+    "instock": 4,
+    "rending": 0,
+    "quantity": 4
+}
+
+###
+DELETE http://localhost:5000/book-stocks/api/2
+
+###
+GET http://localhost:5000/book-stocks/book
