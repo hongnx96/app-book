@@ -148,6 +148,7 @@ export default {
             if(this.$v.$invalid) {
 
             } else {
+               
                 this.$store.dispatch('USER/signIn', {
                     user_email: this.email,
                     user_password: this.password
