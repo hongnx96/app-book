@@ -51,12 +51,6 @@
                                 params: { id: author.author_id }
                             }"
                         ></router-link>
-                        <!-- <i
-                            class="fas fa-trash-alt text-danger"
-                            v-show="roleName === 'admin'"
-                            @click="deleteAuthorById(author.author_id)"
-                        >
-                        </i> -->
                         <i 
                             class="fas fa-trash-alt text-danger"
                             type="button"
@@ -118,42 +112,23 @@ export default {
         }
     },
     methods: {
-        // deleteAuthorById(id) {
-        //     const headers = {
-        //         Authorization: 'Bearer ' + localStorage.getItem('Authorization')
-        //     };
-        //     this.$store.dispatch('AUTHOR/deleteAuthorById', {
-        //         id,
-        //         headers
-        //     })
-        //     .then((response) => {
-        //         if(response.data.success) {
-        //             this.searchAuthor();
-        //             let parent = document.getElementById('parentMsg');
-        //             parent.innerHTML = `
-        //                 <div id="msg" class="toast" style="position: absolute; top: 5px; right: 5px; z-index: 9999; border-left: 4px solid #00c02c" data-delay="5000">
-        //                     <div class="toast-header">
-        //                         <i class="fas fa-check-circle pr-1" style="color: #00c02c; font-size: 18px"></i>
-        //                         <strong style="font-size: 18px" class="mr-auto">Success</strong>
-        //                         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-        //                             <span aria-hidden="true">&times;</span>
-        //                         </button>
-        //                     </div>
-        //                     <div style="font-size: 18px" class="toast-body">
-        //                         Delete author successfull.
-        //                     </div>
-        //                 </div>
-        //             `;
-        //             $('#msg').toast('show');
-        //         } else {
-        //             this.$router.push({
-        //                 name: 'Error'
-        //             });
-        //         }
-        //     })
-            
-        //     //console.log(id);
-        // },
+        deleteAuthorById(id) {
+           const headers = {
+                Authorization: 'Bearer ' + localStorage.getItem('Authorization')
+            }
+            this.$store.dispatch('AUTHOR/deleteAuthorById', {
+                id,
+                headers
+            })
+            .then((response) => {
+                if (response.data.success) {
+                    this.searchAuthor();
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        },
         onPageChanged(page) {
             this.paginate(this.perPage, page - 1);
             const { name } = this.$route.query;
@@ -223,7 +198,6 @@ export default {
             this.inputName = this.nameQuery;
         }
         this.roleName = localStorage.getItem('roleName');
-        //console.log(localStorage.getItem('roleName'));
     },
     watch: {
         inputName(newName, oldName) {
@@ -253,30 +227,9 @@ export default {
         $('#deleteModal').on('show.bs.modal', function (event) {
             let button = $(event.relatedTarget) // Button that triggered the modal
             id = button.data('id') 
-            //console.log(id);
         });
         $('#btnDelete').click(() => {
-            //console.log('delete');
-            const headers = {
-                Authorization: 'Bearer ' + localStorage.getItem('Authorization')
-            }
-            this.$store.dispatch('AUTHOR/deleteAuthorById', {
-                id,
-                headers
-            })
-            .then((response) => {
-                if (response.data.success) {
-                    this.searchAuthor();
-                    this.$router.push({
-                        name: 'AuthorIndex'
-                    }).catch(() => {});
-                    //this.search();
-                    //window.location.href = 'http://localhost:8080/student';
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+            this.deleteAuthorById(id);
         });
     }
 }

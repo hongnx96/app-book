@@ -72,7 +72,9 @@
                         <i
                             class="fas fa-trash-alt text-danger"
                             v-show="roleName === 'admin'"
-                            @click="deleteHistoryById(history.history_id)"
+                            type="button"
+                            data-toggle="modal" data-target="#deleteModal"
+                            :data-id="history.history_id" 
                         >
                         </i>
                     </b-td>
@@ -88,6 +90,26 @@
             :total-rows="rows"
         >
         </b-pagination>
+
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete history?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete this history?
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btnDelete" type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -114,41 +136,23 @@ export default {
     },
     methods: {
         deleteHistoryById(id) {
-            const headers = {
+           const headers = {
                 Authorization: 'Bearer ' + localStorage.getItem('Authorization')
-            };
+            }
             this.$store.dispatch('HISTORY/deleteHistoryById', {
                 id,
                 headers
             })
             .then((response) => {
-                if(response.data.success) {
+                if (response.data.success) {
                     this.searchHistory();
-                    let parent = document.getElementById('parentMsg');
-                    parent.innerHTML = `
-                        <div id="msg" class="toast" style="position: absolute; top: 5px; right: 5px; z-index: 9999; border-left: 4px solid #00c02c" data-delay="5000">
-                            <div class="toast-header">
-                                <i class="fas fa-check-circle pr-1" style="color: #00c02c; font-size: 18px"></i>
-                                <strong style="font-size: 18px" class="mr-auto">Success</strong>
-                                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div style="font-size: 18px" class="toast-body">
-                                Delete history successfull.
-                            </div>
-                        </div>
-                    `;
-                    $('#msg').toast('show');
-                } else {
-                    this.$router.push({
-                        name: 'Error'
-                    });
                 }
             })
-            
-            //console.log(id);
+            .catch((error) => {
+                console.log(error);
+            });
         },
+       
         onPageChanged(page) {
             this.paginate(this.perPage, page - 1);
             const { 
@@ -369,6 +373,16 @@ export default {
         rows() {
             return this.histories.length;
         }
+    },
+    mounted() {
+        let id;
+        $('#deleteModal').on('show.bs.modal', function (event) {
+            let button = $(event.relatedTarget) // Button that triggered the modal
+            id = button.data('id') 
+        });
+        $('#btnDelete').click(() => {
+            this.deleteCustomerById(id);
+        });
     },
 }
 </script>
