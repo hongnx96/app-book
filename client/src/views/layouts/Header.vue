@@ -190,11 +190,12 @@ export default {
     },
     methods: {
         logout() {
-            console.log('logout');
-            localStorage.removeItem('Authorization');
-            localStorage.removeItem('userEmail');
-            localStorage.removeItem('roleName');
-            localStorage.removeItem('listCart');
+            //console.log('logout');
+            // localStorage.removeItem('Authorization');
+            // localStorage.removeItem('userEmail');
+            // localStorage.removeItem('roleName');
+            // localStorage.removeItem('listCart');
+            localStorage.clear();
             this.$router.push({ name: "SignIn" });
         }
     },
